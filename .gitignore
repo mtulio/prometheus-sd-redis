@@ -13,3 +13,6 @@
 
 # Custom files
 contrib/out.json
+.build/
+dist/
+bin/
