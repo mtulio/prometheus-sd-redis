@@ -1,0 +1,34 @@
+{
+    "services": [
+        {
+            "type": "cluster",
+            "job": "redis",
+            "url": "redis-cluster-ecache.sample:6379",
+            "labels":
+                {
+                    "type": "cluster",
+                    "name": "ecache"
+                }
+        },
+        {
+            "type": "cluster",
+            "job": "redis",
+            "url": "redis-cluster-ec2.sample:6379",
+            "labels":
+                {
+                    "type": "cluster",
+                    "name": "ecache"
+                }
+        },
+        {
+            "type": "standalone",
+            "job": "redis",
+            "url": "redis-std-ec2.sample:6379",
+            "labels":
+                {
+                    "type": "standalone",
+                    "name": "std-ec2"
+                }
+        }
+    ]
+}
