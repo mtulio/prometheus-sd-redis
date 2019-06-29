@@ -4,6 +4,7 @@
 DIR_BIN ?= ./bin
 DIR_DIST ?= ./dist
 DIR_TMP ?= ./.build
+DIR_DOC ?= ./doc
 
 BIN_NAME ?= prometheus-sd-redis
 
@@ -42,6 +43,7 @@ install-gox:
 ensure-dirs:
 	@mkdir -p $(BUILD_DIR)
 	@mkdir -p $(DIR_TMP)/$(BIN_NAME)-$(BUILD_OS)-$(BUILD_ARCH)
+	@mkdir -p $(DIR_DOC)
 
 modules-dep:
 	if [[ -f 'go.mod' ]]; then \
@@ -118,3 +120,16 @@ clear-bins:
 	@rm -fr $(DIR_DIST)
 
 clean: clear-bins
+
+# DOC
+define docGen
+	mkdir -p $(DIR_DOC)/$1/$2 || true; \
+	godoc -goroot $(PWD) -html $(PWD)/$1/$2 > $(DIR_DOC)/$1/$2/index.html
+endef
+
+doc-gen: ensure-dirs
+	godoc -goroot $(PWD) -html $(PWD) > $(DIR_DOC)/index.html
+	$(foreach d,$(shell ls ./src),$(call docGen,src,$(d));)
+
+doc-run:
+	godoc -http=":6060" -goroot $(PWD)

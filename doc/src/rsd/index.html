@@ -1,0 +1,473 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = ;
+	document.CALLGRAPH = ;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "/home/marcobraga/.go/src/github.com/mtulio/prometheus-sd-redis/src/rsd"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="#ClusterExporter">type ClusterExporter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewClusterExporter">func NewClusterExporter(addr string) (*ClusterExporter, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClusterExporter.DiscoveryCluster">func (ce *ClusterExporter) DiscoveryCluster() error</a></dd>
+				
+			
+				
+				<dd><a href="#ClusterNode">type ClusterNode</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Exporter">type Exporter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewRedisExporter">func NewRedisExporter(redisURI string) (*Exporter, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SDConfig">type SDConfig</a></dd>
+				
+				
+			
+				
+				<dd><a href="#SDConfigs">type SDConfigs</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Service">type Service</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Services">type Services</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="#example_NewClusterExporter">NewClusterExporter</a></dd>
+			
+			<dd><a class="exampleLink" href="#example_NewClusterExporter_second">NewClusterExporter (Second)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/target/cluster.go">cluster.go</a>
+			
+				<a href="/src/target/service.go">service.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+		
+			
+			
+			<h2 id="ClusterExporter">type <a href="/src/target/cluster.go?s=500:596#L18">ClusterExporter</a>
+				<a class="permalink" href="#ClusterExporter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ClusterExporter is a Redis Cluster Prometheus exporter
+</p>
+
+			<pre>type ClusterExporter struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#Mutex">Mutex</a>
+
+<span id="ClusterExporter.RedisEndpoint"></span>    RedisEndpoint <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterExporter.ClusterNodes"></span>    ClusterNodes  []*<a href="#ClusterNode">ClusterNode</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClusterExporter">func <a href="/src/target/cluster.go?s=930:992#L40">NewClusterExporter</a>
+					<a class="permalink" href="#NewClusterExporter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewClusterExporter(addr <a href="/pkg/builtin/#string">string</a>) (*<a href="#ClusterExporter">ClusterExporter</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewClusterExporter create an SD Cluster metadata.
+</p>
+
+				<div id="example_NewClusterExporter" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+
+<span class="comment">// Redis node URL (one Redis node ingressed on the cluster)</span>
+exp, err := rsd.NewClusterExporter(
+    &#34;my-redis-cluster-url.example.com&#34;,
+)
+if err != nil {
+    log.Error(fmt.Sprint(err))
+}
+err = exp.DiscoveryCluster()
+if err != nil {
+    log.Errorf(&#34;ERROR discovering the cluster.&#34;)
+}
+c := rsd.SDConfig{}
+for _, n := range exp.ClusterNodes {
+    fmt.Printf(&#34;Redis cluster&#39;s node IP: %s\n&#34;, n.Addr)
+}
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_NewClusterExporter_second" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Second)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Second)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+fmt.Println(&#34;Second sample&#34;)
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+
+			
+				
+				<h3 id="ClusterExporter.DiscoveryCluster">func (*ClusterExporter) <a href="/src/target/cluster.go?s=1123:1174#L50">DiscoveryCluster</a>
+					<a class="permalink" href="#ClusterExporter.DiscoveryCluster">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce *<a href="#ClusterExporter">ClusterExporter</a>) DiscoveryCluster() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+DiscoveryCluster discovery all nodes on the cluster.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ClusterNode">type <a href="/src/target/cluster.go?s=645:875#L26">ClusterNode</a>
+				<a class="permalink" href="#ClusterNode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ClusterNode is a Redis Host representation.
+</p>
+
+			<pre>type ClusterNode struct {
+<span id="ClusterNode.Exporter"></span>    Exporter    *<a href="#Exporter">Exporter</a>
+<span id="ClusterNode.NodeID"></span>    NodeID      <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.Addr"></span>    Addr        <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.Flags"></span>    Flags       <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.MasterID"></span>    MasterID    <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.PingSent"></span>    PingSent    <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.PongRecv"></span>    PongRecv    <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.ConfigEpoch"></span>    ConfigEpoch <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.LinkState"></span>    LinkState   <a href="/pkg/builtin/#string">string</a>
+<span id="ClusterNode.Slots"></span>    Slots       <a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Exporter">type <a href="/src/target/cluster.go?s=182:224#L2">Exporter</a>
+				<a class="permalink" href="#Exporter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Exporter implements the prometheus.Exporter interface, and exports Redis metrics.
+</p>
+
+			<pre>type Exporter struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewRedisExporter">func <a href="/src/target/cluster.go?s=287:344#L7">NewRedisExporter</a>
+					<a class="permalink" href="#NewRedisExporter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRedisExporter(redisURI <a href="/pkg/builtin/#string">string</a>) (*<a href="#Exporter">Exporter</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewRedisExporter returns a new exporter of Redis metrics.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="SDConfig">type <a href="/src/target/service.go?s=289:400#L6">SDConfig</a>
+				<a class="permalink" href="#SDConfig">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type SDConfig struct {
+<span id="SDConfig.Targets"></span>    Targets []<a href="/pkg/builtin/#string">string</a>          `json:&#34;targets&#34;`
+<span id="SDConfig.Labels"></span>    Labels  map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a> `json:&#34;labels&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SDConfigs">type <a href="/src/target/service.go?s=262:287#L4">SDConfigs</a>
+				<a class="permalink" href="#SDConfigs">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type SDConfigs []<a href="#SDConfig">SDConfig</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Service">type <a href="/src/target/service.go?s=13:196#L1">Service</a>
+				<a class="permalink" href="#Service">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Service struct {
+<span id="Service.Type"></span>    Type   <a href="/pkg/builtin/#string">string</a>            `json:&#34;type&#34;`
+<span id="Service.Job"></span>    Job    <a href="/pkg/builtin/#string">string</a>            `json:&#34;job&#34;`
+<span id="Service.URL"></span>    URL    <a href="/pkg/builtin/#string">string</a>            `json:&#34;url&#34;`
+<span id="Service.Labels"></span>    Labels map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a> `json:&#34;labels&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Services">type <a href="/src/target/service.go?s=198:260#L1">Services</a>
+				<a class="permalink" href="#Services">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Services struct {
+<span id="Services.Services"></span>    Services []<a href="#Service">Service</a> `json:&#34;services&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+

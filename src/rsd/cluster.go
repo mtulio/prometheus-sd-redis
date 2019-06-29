@@ -24,6 +24,7 @@ func NewRedisExporter(redisURI string) (*Exporter, error) {
 
 // Redis Cluster implementation
 
+// ClusterExporter is a Redis Cluster Prometheus exporter
 type ClusterExporter struct {
 	sync.Mutex
 
@@ -31,6 +32,7 @@ type ClusterExporter struct {
 	ClusterNodes  []*ClusterNode
 }
 
+// ClusterNode is a Redis Host representation.
 type ClusterNode struct {
 	Exporter    *Exporter
 	NodeID      string
@@ -44,6 +46,7 @@ type ClusterNode struct {
 	Slots       string
 }
 
+// NewClusterExporter create an SD Cluster metadata.
 func NewClusterExporter(addr string) (*ClusterExporter, error) {
 
 	ce := ClusterExporter{
